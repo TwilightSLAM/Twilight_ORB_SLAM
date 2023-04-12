@@ -80,7 +80,6 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
 
         mStrLoadAtlasFromFile = settings_->atlasLoadFile();
         mStrSaveAtlasToFile = settings_->atlasSaveFile();
-
         cout << (*settings_) << endl;
     }
     else{
@@ -97,7 +96,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
             mStrSaveAtlasToFile = (string)node;
         }
     }
-
+    
     node = fsSettings["loopClosing"];
     bool activeLC = true;
     if(!node.empty())

@@ -536,12 +536,12 @@ namespace ORB_SLAM3 {
         else{
             output << "Kannala-Brandt";
         }
-        output << ")" << ": [";
+        output << ")" << ": [";        
         for(size_t i = 0; i < settings.originalCalib1_->size(); i++){
             output << " " << settings.originalCalib1_->getParameter(i);
         }
         output << " ]" << endl;
-
+        
         if(!settings.vPinHoleDistorsion1_.empty()){
             output << "\t-Camera 1 distortion parameters: [ ";
             for(float d : settings.vPinHoleDistorsion1_){
@@ -549,7 +549,7 @@ namespace ORB_SLAM3 {
             }
             output << " ]" << endl;
         }
-
+	
         if(settings.sensor_ == System::STEREO || settings.sensor_ == System::IMU_STEREO){
             output << "\t-Camera 2 parameters (";
             if(settings.cameraType_ == Settings::PinHole || settings.cameraType_ ==  Settings::Rectified){
@@ -558,11 +558,11 @@ namespace ORB_SLAM3 {
             else{
                 output << "Kannala-Brandt";
             }
-            output << "" << ": [";
-            for(size_t i = 0; i < settings.originalCalib2_->size(); i++){
-                output << " " << settings.originalCalib2_->getParameter(i);
-            }
-            output << " ]" << endl;
+            //output << "" << ": [";
+            //for(size_t i = 0; i < settings.originalCalib2_->size(); i++){
+            //    output << " " << settings.originalCalib2_->getParameter(i);
+            //}
+            //output << " ]" << endl;
 
             if(!settings.vPinHoleDistorsion2_.empty()){
                 output << "\t-Camera 1 distortion parameters: [ ";

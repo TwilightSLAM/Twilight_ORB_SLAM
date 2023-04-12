@@ -35,10 +35,10 @@ int main(int argc, char **argv)
 {
     if(argc != 4)
     {
-        cerr << endl << "Usage: ./mono_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
+        cerr << endl << "Usage: ./mono_large_loop_1 path_to_vocabulary path_to_settings path_to_sequence" << endl;
         return 1;
     }
-
+    
     // Retrieve paths to images
     vector<string> vstrImageFilenames;
     vector<double> vTimestamps;
@@ -177,10 +177,26 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilena
     const int nTimes = vTimestamps.size();
     vstrImageFilenames.resize(nTimes);
 
-    for(int i=0; i<nTimes; i++)
+    /*for(int i=0; i<nTimes; i++)
     {
         stringstream ss;
         ss << setfill('0') << setw(6) << i;
         vstrImageFilenames[i] = strPrefixLeft + ss.str() + ".png";
+    }*/
+    ifstream fImages;
+    string strPathImageFile = strPathToSequence + "/images.txt";
+    fImages.open(strPathImageFile.c_str());
+    int i = 0;
+    while(!fImages.eof())
+    {
+    	string s;
+    	getline(fImages,s);
+    	if(!s.empty())
+    	{
+    	    stringstream ss;
+    	    ss << s;
+    	    vstrImageFilenames[i] = strPrefixLeft + ss.str();
+    	    i++;
+    	}
     }
 }
